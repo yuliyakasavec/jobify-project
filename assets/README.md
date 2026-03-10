@@ -47,9 +47,9 @@ import { Camera } from 'lucide-react';
 
 export default function Home() {
   return (
-    <div className='h-screen flex items-center justify-center'>
+    <div className="h-screen flex items-center justify-center">
       <Button>default button</Button>
-      <Button variant='outline' size='icon'>
+      <Button variant="outline" size="icon">
         <Camera />
       </Button>
     </div>
@@ -60,18 +60,15 @@ export default function Home() {
 ## Challenge - Build the Home Page (app/page.tsx)
 
 1. **Import necessary modules and components:**
-
    - Import the `Image` component from 'next/image' for displaying images.
    - Import the `Logo` and `LandingImg` SVG files from the assets directory.
    - Import the `Button` component from the UI components directory.
    - Import the `Link` component from 'next/link' for navigation.
 
 2. **Define the `Home` component:**
-
    - This component doesn't receive any props.
 
 3. **Inside the `Home` component, return the JSX:**
-
    - The main wrapper is a `main` HTML element.
    - Inside `main`, there are two main sections: `header` and `section`.
    - The `header` contains the `Image` component that displays the `Logo`.
@@ -81,7 +78,6 @@ export default function Home() {
    - The `Image` component displays the `LandingImg`.
 
 4. **Apply CSS classes for styling:**
-
    - CSS classes are applied to the elements for styling. These classes are from Tailwind CSS, a utility-first CSS framework.
 
 5. **Export the `Home` component as the default export of the module.**
@@ -112,25 +108,25 @@ import Link from 'next/link';
 export default function Home() {
   return (
     <main>
-      <header className='max-w-6xl mx-auto px-4 sm:px-8 py-6 '>
-        <Image src={Logo} alt='logo' />
+      <header className="max-w-6xl mx-auto px-4 sm:px-8 py-6 ">
+        <Image src={Logo} alt="logo" />
       </header>
-      <section className='max-w-6xl mx-auto px-4 sm:px-8 h-screen -mt-20 grid lg:grid-cols-[1fr,400px] items-center'>
+      <section className="max-w-6xl mx-auto px-4 sm:px-8 h-screen -mt-20 grid lg:grid-cols-[1fr,400px] items-center">
         <div>
-          <h1 className='capitalize text-4xl md:text-7xl font-bold'>
-            job <span className='text-primary'>tracking</span> app
+          <h1 className="capitalize text-4xl md:text-7xl font-bold">
+            job <span className="text-primary">tracking</span> app
           </h1>
-          <p className='leading-loose max-w-md mt-4 '>
+          <p className="leading-loose max-w-md mt-4 ">
             I am baby wayfarers hoodie next level taiyaki brooklyn cliche blue
             bottle single-origin coffee chia. Aesthetic post-ironic venmo,
             quinoa lo-fi tote bag adaptogen everyday carry meggings +1 brunch
             narwhal.
           </p>
-          <Button asChild className='mt-4'>
-            <Link href='/add-job'>Get Started</Link>
+          <Button asChild className="mt-4">
+            <Link href="/add-job">Get Started</Link>
           </Button>
         </div>
-        <Image src={LandingImg} alt='landing' className='hidden lg:block ' />
+        <Image src={LandingImg} alt="landing" className="hidden lg:block " />
       </section>
     </main>
   );
@@ -194,7 +190,7 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider>
-      <html lang='en'>
+      <html lang="en">
         <body className={inter.className}>{children}</body>
       </html>
     </ClerkProvider>
@@ -222,21 +218,17 @@ export const config = {
 ## Challenge - Build the links.tsx Component
 
 1. **Create File and Import necessary modules and components:**
-
    - create utils/links.tsx
    - Import the `AreaChart`, `Layers`, and `AppWindow` components from 'lucide-react' for displaying icons.
 
 2. **Define the `NavLink` type:**
-
    - This type has three properties: `href` (a string), `label` (a string), and `icon` (a React Node).
 
 3. **Define the `links` constant:**
-
    - This constant is an array of `NavLink` objects.
    - Each object represents a navigation link with a `href`, `label`, and `icon`.
 
 4. **Define the navigation links:**
-
    - The first link has a `href` of '/add-job', a `label` of 'add job', and an `icon` of `<Layers />`.
    - The second link has a `href` of '/jobs', a `label` of 'all jobs', and an `icon` of `<AppWindow />`.
    - The third link has a `href` of '/stats', a `label` of 'stats', and an `icon` is not defined yet.
@@ -283,7 +275,6 @@ export default links;
 ## Challenge - Dashboard Layout
 
 - create following components :
-
   - Sidebar
   - Navbar
   - LinksDropdown
@@ -292,16 +283,13 @@ export default links;
 - setup (dashboard/layout.tsx)
 
 1. **Import necessary modules and components:**
-
    - Import `Navbar` and `Sidebar` components.
    - Import `PropsWithChildren` from 'react'.
 
 2. **Define the `layout` component:**
-
    - This component receives `children` as props.
 
 3. **Return the JSX:**
-
    - The main wrapper is a `main` element with a grid layout.
    - The first `div` contains the `Sidebar` component and is hidden on small screens.
    - The second `div` spans 4 columns on large screens and contains the `Navbar` component and the `children`.
@@ -312,7 +300,6 @@ export default links;
 ## Dashboard Layout
 
 - create following components :
-
   - Sidebar
   - Navbar
   - LinksDropdown
@@ -328,16 +315,16 @@ import { PropsWithChildren } from 'react';
 
 function layout({ children }: PropsWithChildren) {
   return (
-    <main className='grid lg:grid-cols-5'>
+    <main className="grid lg:grid-cols-5">
       {/* first-col hide on small screen */}
-      <div className='hidden lg:block lg:col-span-1 lg:min-h-screen'>
+      <div className="hidden lg:block lg:col-span-1 lg:min-h-screen">
         <Sidebar />
       </div>
       {/* second-col hide dropdown on big screen */}
 
-      <div className='lg:col-span-4'>
+      <div className="lg:col-span-4">
         <Navbar />
-        <div className='py-16 px-4 sm:px-8 lg:px-16'>{children}</div>
+        <div className="py-16 px-4 sm:px-8 lg:px-16">{children}</div>
       </div>
     </main>
   );
@@ -348,15 +335,12 @@ export default layout;
 ## Challenge - Build Sidebar Component
 
 1. **Import necessary modules and components:**
-
    - Import `Logo`, `links`, `Image`, `Link`, `Button`, and `usePathname`.
 
 2. **Define the `Sidebar` component:**
-
    - Use `usePathname` to get the current route.
 
 3. **Return the JSX:**
-
    - The main wrapper is an `aside` element.
    - Inside `aside`, display the `Logo` using `Image`.
    - Map over `links` to create `Button` components for each link.
@@ -382,9 +366,9 @@ function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className='py-4 px-8 bg-muted h-full'>
-      <Image src={Logo} alt='logo' className='mx-auto' />
-      <div className='flex flex-col mt-20 gap-y-4'>
+    <aside className="py-4 px-8 bg-muted h-full">
+      <Image src={Logo} alt="logo" className="mx-auto" />
+      <div className="flex flex-col mt-20 gap-y-4">
         {links.map((link) => {
           return (
             <Button
@@ -392,8 +376,8 @@ function Sidebar() {
               key={link.href}
               variant={pathname === link.href ? 'default' : 'link'}
             >
-              <Link href={link.href} className='flex items-center gap-x-2 '>
-                {link.icon} <span className='capitalize'>{link.label}</span>
+              <Link href={link.href} className="flex items-center gap-x-2 ">
+                {link.icon} <span className="capitalize">{link.label}</span>
               </Link>
             </Button>
           );
@@ -408,15 +392,12 @@ export default Sidebar;
 ## Challenge - Build Navbar Component
 
 1. **Import necessary modules and components:**
-
    - Import `LinksDropdown`, `UserButton` from '@clerk/nextjs', and `ThemeToggle`.
 
 2. **Define the `Navbar` component:**
-
    - This component doesn't receive any props.
 
 3. **Return the JSX:**
-
    - The main wrapper is a `nav` element with Tailwind CSS classes for styling.
    - Inside `nav`, there are two `div` elements.
    - The first `div` contains the `LinksDropdown` component.
@@ -435,13 +416,13 @@ import ThemeToggle from './ThemeToggle';
 
 function Navbar() {
   return (
-    <nav className='bg-muted py-4 sm:px-16 lg:px-24 px-4 flex items-center justify-between'>
+    <nav className="bg-muted py-4 sm:px-16 lg:px-24 px-4 flex items-center justify-between">
       <div>
         <LinksDropdown />
       </div>
-      <div className='flex items-center gap-x-4'>
+      <div className="flex items-center gap-x-4">
         <ThemeToggle />
-        <UserButton afterSignOutUrl='/' />
+        <UserButton afterSignOutUrl="/" />
       </div>
     </nav>
   );
@@ -452,15 +433,12 @@ export default Navbar;
 ## Challenge - Build LinksDropdown Component
 
 1. **Explore the Dropdown-Menu Component:**
-
    - Explore the dropdown-menu component in the shadcn library.
 
 2. **Install the Dropdown-Menu Component:**
-
    - Install it using `npx shadcn-ui@latest add dropdown-menu`
 
 3. **Import necessary modules and components:**
-
    - Import `DropdownMenu`, `DropdownMenuContent`, `DropdownMenuItem`, `DropdownMenuTrigger` from the dropdown-menu component.
    - Import `AlignLeft` from 'lucide-react' for the menu icon.
    - Import `Button` from the local UI components.
@@ -468,11 +446,9 @@ export default Navbar;
    - Import `Link` from 'next/link' for navigation.
 
 4. **Define the `DropdownLinks` function component:**
-
    - This component doesn't receive any props.
 
 5. **Inside the `DropdownLinks` component, return the JSX:**
-
    - The main wrapper is the `DropdownMenu` component.
    - Inside `DropdownMenu`, there is a `DropdownMenuTrigger` component that triggers the dropdown menu. It has a `Button` component with an `AlignLeft` icon. This button is hidden on large screens.
    - The `DropdownMenuContent` component contains the dropdown menu items. Each item is a `DropdownMenuItem` component that wraps a `Link` component. The `Link` component navigates to the link's `href` when clicked.
@@ -504,23 +480,23 @@ import Link from 'next/link';
 function DropdownLinks() {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild className='lg:hidden'>
-        <Button variant='outline' size='icon'>
+      <DropdownMenuTrigger asChild className="lg:hidden">
+        <Button variant="outline" size="icon">
           <AlignLeft />
 
-          <span className='sr-only'>Toggle links</span>
+          <span className="sr-only">Toggle links</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
-        className='w-52 lg:hidden '
-        align='start'
+        className="w-52 lg:hidden "
+        align="start"
         sideOffset={25}
       >
         {links.map((link) => {
           return (
             <DropdownMenuItem key={link.href}>
-              <Link href={link.href} className='flex items-center gap-x-2 '>
-                {link.icon} <span className='capitalize'>{link.label}</span>
+              <Link href={link.href} className="flex items-center gap-x-2 ">
+                {link.icon} <span className="capitalize">{link.label}</span>
               </Link>
             </DropdownMenuItem>
           );
@@ -567,7 +543,7 @@ export default Providers;
 app/layout
 
 ```tsx
-<html lang='en' suppressHydrationWarning>
+<html lang="en" suppressHydrationWarning>
   <body className={inter.className}>
     <Providers>{children}</Providers>
   </body>
@@ -611,8 +587,8 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <ThemeProvider
-        attribute='class'
-        defaultTheme='system'
+        attribute="class"
+        defaultTheme="system"
         enableSystem
         disableTransitionOnChange
       >
@@ -647,13 +623,13 @@ export function ModeToggle() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant='outline' size='icon'>
-          <Sun className='h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0' />
-          <Moon className='absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100' />
-          <span className='sr-only'>Toggle theme</span>
+        <Button variant="outline" size="icon">
+          <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+          <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+          <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align='end'>
+      <DropdownMenuContent align="end">
         <DropdownMenuItem onClick={() => setTheme('light')}>
           Light
         </DropdownMenuItem>
@@ -720,21 +696,21 @@ function CreateJobForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-8'>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
           control={form.control}
-          name='username'
+          name="username"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Username</FormLabel>
               <FormControl>
-                <Input placeholder='shadcn' {...field} />
+                <Input placeholder="shadcn" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button type='submit'>Submit</Button>
+        <Button type="submit">Submit</Button>
       </form>
     </Form>
   );
@@ -759,21 +735,17 @@ export default CreateJobForm;
 ## Challenge - Create Types
 
 1. **Create utils/types.ts:**
-
    - Create a new file named `types.ts` inside the `utils` directory.
 
 2. **Define the `JobStatus` and `JobMode` enums:**
-
    - Define the `JobStatus` enum with the values 'applied', 'interview', 'offer', and 'rejected'.
    - Define the `JobMode` enum with the values 'fullTime', 'partTime', and 'internship'.
 
 3. **Define the `createAndEditJobSchema` object:**
-
    - Use `z.object()` from the zod library to define a schema for creating and editing jobs.
    - The schema includes `position`, `company`, `location`, `status`, and `mode`. Each of these fields is a string with a minimum length of 2 characters, except for `status` and `mode` which are enums.
 
 4. **Export the `createAndEditJobSchema` object:**
-
    - Export the `createAndEditJobSchema` object so it can be used in other files.
 
 5. **Define and export the `CreateAndEditJobType` type:**
@@ -843,33 +815,27 @@ npx shadcn-ui@latest add select
 ## Challenge - FormComponents
 
 1. **Import necessary libraries and components**
-
    - Import the `Control` type from `react-hook-form`.
    - Import the `Select`, `SelectContent`, `SelectItem`, `SelectTrigger`, and `SelectValue` components from your UI library.
    - Import the `FormControl`, `FormField`, `FormItem`, `FormLabel`, and `FormMessage` components from your UI library.
    - Import the `Input` component from your local UI components.
 
 2. **Define the types for CustomFormField and CustomFormSelect components**
-
    - Define a type `CustomFormFieldProps` that includes `name` and `control` properties.
    - Define a type `CustomFormSelectProps` that includes `name`, `control`, `items`, and `labelText` properties.
 
 3. **Define the CustomFormField component**
-
    - Define a new function component named `CustomFormField` that takes `CustomFormFieldProps` as props.
 
 4. **Create the CustomFormField UI**
-
    - Inside the `CustomFormField` component, return a `FormField` component.
    - Pass `control` and `name` to the `FormField` component.
    - Inside the `FormField` component, render a `FormItem` that contains a `FormLabel`, a `FormControl` with an `Input`, and a `FormMessage`.
 
 5. **Define the CustomFormSelect component**
-
    - Define a new function component named `CustomFormSelect` that takes `CustomFormSelectProps` as props.
 
 6. **Create the CustomFormSelect UI**
-
    - Inside the `CustomFormSelect` component, return a `FormField` component.
    - Pass `control` and `name` to the `FormField` component.
    - Inside the `FormField` component, render a `FormItem` that contains a `FormLabel`, a `Select` with a `SelectTrigger` and `SelectContent`, and a `FormMessage`.
@@ -912,7 +878,7 @@ export function CustomFormField({ name, control }: CustomFormFieldProps) {
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel className='capitalize'>{name}</FormLabel>
+          <FormLabel className="capitalize">{name}</FormLabel>
           <FormControl>
             <Input {...field} />
           </FormControl>
@@ -942,7 +908,7 @@ export function CustomFormSelect({
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel className='capitalize'>{labelText || name}</FormLabel>
+          <FormLabel className="capitalize">{labelText || name}</FormLabel>
           <Select onValueChange={field.onChange} defaultValue={field.value}>
             <FormControl>
               <SelectTrigger>
@@ -972,7 +938,6 @@ export default CustomFormSelect;
 ## Challenge - CreateJobForm
 
 1. **Import necessary libraries and components**
-
    - Import the `zodResolver` from `@hookform/resolvers/zod` for form validation.
    - Import the `useForm` hook from `react-hook-form` for form handling.
    - Import the necessary types and schemas for your form from `@/utils/types`.
@@ -980,26 +945,21 @@ export default CustomFormSelect;
    - Import the `CustomFormField` and `CustomFormSelect` components from `./FormComponents`.
 
 2. **Define the CreateJobForm component**
-
    - Define a new function component named `CreateJobForm`.
 
 3. **Initialize the form with useForm**
-
    - Inside the `CreateJobForm` component, use the `useForm` hook to initialize your form.
    - Pass the `CreateAndEditJobType` for your form data to `useForm`.
    - Use `zodResolver` with your `createAndEditJobSchema` for form validation.
 
 4. **Define default values for the form**
-
    - Define default values for your form fields in the `useForm` hook.
 
 5. **Define the form submission handler**
-
    - Inside the `CreateJobForm` component, define a function for handling form submission.
    - This function should take the form data as its parameter.
 
 6. **Create the form UI**
-
    - In the component's return statement, create the form UI using the `Form` component.
    - Use your custom form field components to create the form fields.
    - Add a submit button to the form.
@@ -1050,33 +1010,33 @@ function CreateJobForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className='bg-muted p-8 rounded'
+        className="bg-muted p-8 rounded"
       >
-        <h2 className='capitalize font-semibold text-4xl mb-6'>add job</h2>
-        <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-3 items-start'>
+        <h2 className="capitalize font-semibold text-4xl mb-6">add job</h2>
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 items-start">
           {/* position */}
-          <CustomFormField name='position' control={form.control} />
+          <CustomFormField name="position" control={form.control} />
           {/* company */}
-          <CustomFormField name='company' control={form.control} />
+          <CustomFormField name="company" control={form.control} />
           {/* location */}
-          <CustomFormField name='location' control={form.control} />
+          <CustomFormField name="location" control={form.control} />
 
           {/* job status */}
           <CustomFormSelect
-            name='status'
+            name="status"
             control={form.control}
-            labelText='job status'
+            labelText="job status"
             items={Object.values(JobStatus)}
           />
           {/* job  type */}
           <CustomFormSelect
-            name='mode'
+            name="mode"
             control={form.control}
-            labelText='job mode'
+            labelText="job mode"
             items={Object.values(JobMode)}
           />
 
-          <Button type='submit' className='self-end capitalize'>
+          <Button type="submit" className="self-end capitalize">
             create job
           </Button>
         </div>
@@ -1188,7 +1148,6 @@ npx prisma db push
 ## Challenge - CreateJobAction
 
 1. **Import necessary libraries and modules**
-
    - Create utils/action.ts file
    - Import the prisma instance from your database configuration file.
    - Import the auth function from `@clerk/nextjs` for user authentication.
@@ -1198,36 +1157,30 @@ npx prisma db push
    - Import `dayjs` for date and time manipulation.
 
 2. **Define the authenticateAndRedirect function**
-
    - Define a function named `authenticateAndRedirect` that doesn't take any parameters.
    - Inside this function, call the auth function and destructure `userId` from its return value.
    - If `userId` is not defined, call the redirect function with `'/'` as the argument to redirect the user to the home page.
    - Return `userId`.
 
 3. **Define the createJobAction function**
-
    - Define an asynchronous function named `createJobAction` that takes values of type `CreateAndEditJobType` as a parameter.
    - This function should return a Promise that resolves to `JobType` or null.
 
 4. **Authenticate the user and validate the form values**
-
    - Inside the `createJobAction` function, call `authenticateAndRedirect` and store its return value in `userId`.
    - Call `createAndEditJobSchema.parse` with `values` as the argument to validate the form values.
 
 5. **Create a new job in the database**
-
    - Use the `prisma.job.create` method to create a new job in the database.
    - Pass an object to this method with a `data` property.
    - The `data` property should be an object that spreads the `values` and adds a `clerkId` property with `userId` as its value.
    - Store the return value of this method in `job`.
 
 6. **Handle errors**
-
    - Wrap the validation and database operation in a try-catch block.
    - If an error occurs, log the error to the console and return null.
 
 7. **Return the new job**
-
    - After the try-catch block, return `job`.
 
 8. **Export the createJobAction function**
@@ -1256,7 +1209,7 @@ function authenticateAndRedirect(): string {
 }
 
 export async function createJobAction(
-  values: CreateAndEditJobType
+  values: CreateAndEditJobType,
 ): Promise<JobType | null> {
   // await new Promise((resolve) => setTimeout(resolve, 3000));
   const userId = authenticateAndRedirect();
@@ -1317,13 +1270,13 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
             staleTime: 60 * 1000 * 5,
           },
         },
-      })
+      }),
   );
 
   return (
     <ThemeProvider
-      attribute='class'
-      defaultTheme='system'
+      attribute="class"
+      defaultTheme="system"
       enableSystem
       disableTransitionOnChange
     >
@@ -1395,7 +1348,7 @@ function onSubmit(values: CreateAndEditJobType) {
   mutate(values);
 }
 // return
-<Button type='submit' className='self-end capitalize' disabled={isPending}>
+<Button type="submit" className="self-end capitalize" disabled={isPending}>
   {isPending ? 'loading...' : 'create job'}
 </Button>;
 ```
@@ -1403,28 +1356,23 @@ function onSubmit(values: CreateAndEditJobType) {
 ## Challenge - GetAllJobsAction
 
 1. **Define the getAllJobsAction function**
-
    - Define an asynchronous function named `getAllJobsAction` that takes an object as a parameter.
    - This object should have `search`, `jobStatus`, `page`, and `limit` properties.
    - The `page` and `limit` properties should have default values of 1 and 10, respectively.
    - This function should return a Promise that resolves to an object with `jobs`, `count`, `page`, and `totalPages` properties.
 
 2. **Authenticate the user**
-
    - Inside the `getAllJobsAction` function, call `authenticateAndRedirect` and store its return value in `userId`.
 
 3. **Define the whereClause object**
-
    - Define a `whereClause` object with a `clerkId` property that has `userId` as its value.
 
 4. **Modify the whereClause object based on search and jobStatus**
-
    - If `search` is defined, add an `OR` property to `whereClause` that is an array of objects.
    - Each object in the `OR` array should represent a condition where a field contains the search string.
    - If `jobStatus` is defined and not equal to 'all', add a `status` property to `whereClause` that has `jobStatus` as its value.
 
 5. **Fetch jobs from the database**
-
    - Use the `prisma.job.findMany` method to fetch jobs from the database.
    - Pass an object to this method with `where` and `orderBy` properties.
    - The `where` property should have `whereClause` as its value.
@@ -1432,12 +1380,10 @@ function onSubmit(values: CreateAndEditJobType) {
    - Store the return value of this method in `jobs`.
 
 6. **Handle errors**
-
    - Wrap the database operation in a try-catch block.
    - If an error occurs, log the error to the console and return an object with `jobs`, `count`, `page`, and `totalPages` properties, all of which have 0 or [] as their values.
 
 7. **Return the jobs**
-
    - After the try-catch block, return an object with `jobs`, `count`, `page`, and `totalPages` properties.
 
 8. **Export the getAllJobsAction function**
@@ -1524,7 +1470,7 @@ export async function getAllJobsAction({
 
 ```tsx
 function loading() {
-  return <h2 className='text-xl font-medium capitalize'>loading...</h2>;
+  return <h2 className="text-xl font-medium capitalize">loading...</h2>;
 }
 export default loading;
 ```
@@ -1535,7 +1481,7 @@ JobCard.tsx
 import { JobType } from '@/utils/types';
 
 function JobCard({ job }: { job: JobType }) {
-  return <h1 className='text-3xl'>JobCard</h1>;
+  return <h1 className="text-3xl">JobCard</h1>;
 }
 export default JobCard;
 ```
@@ -1573,25 +1519,21 @@ export default AllJobsPage;
 ## Challenge - SearchForm
 
 1. **Import necessary libraries and components**
-
    - Import the `Input` and `Button` components from your UI library.
    - Import the `usePathname`, `useRouter`, and `useSearchParams` hooks from `next/navigation`.
    - Import the `Select`, `SelectContent`, `SelectItem`, `SelectTrigger`, and `SelectValue` components from your UI library.
    - Import the `JobStatus` type from your types file.
 
 2. **Define the SearchContainer component**
-
    - Define a function component named `SearchContainer`.
 
 3. **Use hooks to get necessary data**
-
    - Inside `SearchContainer`, use the `useSearchParams` hook to get the current search parameters.
    - Use the `get` method of the `searchParams` object to get the `search` and `jobStatus` parameters.
    - Use the `useRouter` hook to get the router object.
    - Use the `usePathname` hook to get the current pathname.
 
 4. **Define the form submission handler**
-
    - Inside `SearchContainer`, define a function named `handleSubmit` for handling form submission.
    - This function should take an event object as its parameter.
    - Inside this function, prevent the default form submission behavior.
@@ -1601,7 +1543,6 @@ export default AllJobsPage;
    - Use the `push` method of the router object to navigate to the current pathname with the new search parameters.
 
 5. **Create the form UI**
-
    - In the component's return statement, create the form UI using the form element.
    - Use the `Input` and `Select` components to create the form fields.
    - Use the `Button` component to create the submit button.
@@ -1650,16 +1591,16 @@ function SearchContainer() {
 
   return (
     <form
-      className='bg-muted mb-16 p-8 grid sm:grid-cols-2 md:grid-cols-3  gap-4 rounded-lg'
+      className="bg-muted mb-16 p-8 grid sm:grid-cols-2 md:grid-cols-3  gap-4 rounded-lg"
       onSubmit={handleSubmit}
     >
       <Input
-        type='text'
-        placeholder='Search Jobs'
-        name='search'
+        type="text"
+        placeholder="Search Jobs"
+        name="search"
         defaultValue={search}
       />
-      <Select defaultValue={jobStatus} name='jobStatus'>
+      <Select defaultValue={jobStatus} name="jobStatus">
         <SelectTrigger>
           <SelectValue />
         </SelectTrigger>
@@ -1673,7 +1614,7 @@ function SearchContainer() {
           })}
         </SelectContent>
       </Select>
-      <Button type='submit'>Search</Button>
+      <Button type="submit">Search</Button>
     </form>
   );
 }
@@ -1683,17 +1624,14 @@ export default SearchContainer;
 ## Challenge - JobsList
 
 1. **Import necessary libraries and modules**
-
    - Import the `useSearchParams` hook from `next/navigation`.
    - Import the `getAllJobsAction` function from your actions file.
    - Import the `useQuery` hook from `@tanstack/react-query`.
 
 2. **Define the JobsList component**
-
    - Define a function component named `JobsList`.
 
 3. **Use hooks to get necessary data**
-
    - Inside `JobsList`, use the `useSearchParams` hook to get the current search parameters.
    - Use the `get` method of the `searchParams` object to get the `search` and `jobStatus` parameters.
    - If `search` or `jobStatus` is null, default them to an empty string and 'all', respectively.
@@ -1701,7 +1639,6 @@ export default SearchContainer;
    - If `page` is null, default it to 1.
 
 4. **Fetch the jobs from the server**
-
    - Use the `useQuery` hook to fetch the jobs from the server.
    - Pass an object to this hook with `queryKey` and `queryFn` properties.
    - The `queryKey` property should be an array with 'jobs', `search`, `jobStatus`, and `pageNumber`.
@@ -1709,7 +1646,6 @@ export default SearchContainer;
    - Store the return value of this hook in `data` and `isPending`.
 
 5. **Handle loading and empty states**
-
    - If `isPending` is true, return a `h2` element with 'Please Wait...' as its child.
    - If `jobs` is an empty array, return a `h2` element with 'No Jobs Found...' as its child.
 
@@ -1739,13 +1675,13 @@ function JobsList() {
   });
   const jobs = data?.jobs || [];
 
-  if (isPending) return <h2 className='text-xl'>Please Wait...</h2>;
+  if (isPending) return <h2 className="text-xl">Please Wait...</h2>;
 
-  if (jobs.length < 1) return <h2 className='text-xl'>No Jobs Found...</h2>;
+  if (jobs.length < 1) return <h2 className="text-xl">No Jobs Found...</h2>;
   return (
     <>
       {/*button container  */}
-      <div className='grid md:grid-cols-2  gap-8'>
+      <div className="grid md:grid-cols-2  gap-8">
         {jobs.map((job) => {
           return <JobCard key={job.id} job={job} />;
         })}
@@ -1772,7 +1708,6 @@ npx shadcn-ui@latest add badge separator card
 ## Challenge - JobCard
 
 1. **Import necessary libraries and components**
-
    - Import the `JobType` type from your types file.
    - Import the `MapPin`, `Briefcase`, `CalendarDays`, and `RadioTower` components from `lucide-react`.
    - Import the `Link` component from `next/link`.
@@ -1780,17 +1715,14 @@ npx shadcn-ui@latest add badge separator card
    - Import the `Separator`, `Button`, `Badge`, `JobInfo`, and `DeleteJobButton` components from your components directory.
 
 2. **Define the JobCard component**
-
    - Define a function component named `JobCard` that takes an object as a prop.
    - This object should have a `job` property of type `JobType`.
 
 3. **Convert the job's creation date to a locale string**
-
    - Inside `JobCard`, create a new Date object with `job.createdAt` as its argument.
    - Call the `toLocaleDateString` method on this object and store its return value in `date`.
 
 4. **Create the component UI**
-
    - In the component's return statement, create the component UI using the `Card`, `CardHeader`, `CardTitle`, `CardDescription`, `Separator`, `CardContent`, `CardFooter`, `Button`, `Link`, and `DeleteJobButton` components.
    - Pass the `job.position` and `job.company` as the children of the `CardTitle` and `CardDescription` components, respectively.
    - Pass the `job.id` as the `href` prop to the `Link` component.
@@ -1825,15 +1757,15 @@ import DeleteJobButton from './DeleteJobButton';
 function JobCard({ job }: { job: JobType }) {
   const date = new Date(job.createdAt).toLocaleDateString();
   return (
-    <Card className='bg-muted'>
+    <Card className="bg-muted">
       <CardHeader>
         <CardTitle>{job.position}</CardTitle>
         <CardDescription>{job.company}</CardDescription>
       </CardHeader>
       <Separator />
       <CardContent>{/* card info */}</CardContent>
-      <CardFooter className='flex gap-4'>
-        <Button asChild size='sm'>
+      <CardFooter className="flex gap-4">
+        <Button asChild size="sm">
           <Link href={`/jobs/${job.id}`}>edit</Link>
         </Button>
         <DeleteJobButton />
@@ -1847,18 +1779,15 @@ export default JobCard;
 ## Challenge - JobInfo
 
 1. **Define the JobInfo component**
-
    - Define a function component named `JobInfo` that takes an object as a prop.
    - This object should have `icon` and `text` properties.
    - The `icon` property should be of type `React.ReactNode` and the `text` property should be of type `string`.
 
 2. **Create the component UI**
-
    - In the component's return statement, create a `div` element with a `className` of 'flex gap-x-2 items-center'.
    - Inside this `div`, render the `icon` and `text` props.
 
 3. **Export the JobInfo component**
-
    - After defining the `JobInfo` component, export it so it can be used in other parts of your application.
 
 4. **Use the JobInfo component**
@@ -1875,7 +1804,7 @@ JobInfo.tsx
 ```tsx
 function JobInfo({ icon, text }: { icon: React.ReactNode; text: string }) {
   return (
-    <div className='flex gap-x-2 items-center'>
+    <div className="flex gap-x-2 items-center">
       {icon}
       {text}
     </div>
@@ -1887,12 +1816,12 @@ export default JobInfo;
 JobCard.tsx
 
 ```tsx
-<CardContent className='mt-4 grid grid-cols-2 gap-4'>
+<CardContent className="mt-4 grid grid-cols-2 gap-4">
   <JobInfo icon={<Briefcase />} text={job.mode} />
   <JobInfo icon={<MapPin />} text={job.location} />
   <JobInfo icon={<CalendarDays />} text={date} />
-  <Badge className='w-32  justify-center'>
-    <JobInfo icon={<RadioTower className='w-4 h-4' />} text={job.status} />
+  <Badge className="w-32  justify-center">
+    <JobInfo icon={<RadioTower className="w-4 h-4" />} text={job.status} />
   </Badge>
 </CardContent>
 ```
@@ -1900,16 +1829,13 @@ JobCard.tsx
 ## Challenge - DeleteJobAction
 
 1. **Define the deleteJobAction function**
-
    - Define an asynchronous function named `deleteJobAction` that takes a string `id` as a parameter.
    - This function should return a Promise that resolves to a `JobType` object or null.
 
 2. **Authenticate the user**
-
    - Inside the `deleteJobAction` function, call `authenticateAndRedirect` and store its return value in `userId`.
 
 3. **Delete the job from the database**
-
    - Use the `prisma.job.delete` method to delete the job from the database.
    - Pass an object to this method with a `where` property.
    - The `where` property should be an object with `id` and `clerkId` properties.
@@ -1917,12 +1843,10 @@ JobCard.tsx
    - Store the return value of this method in `job`.
 
 4. **Handle errors**
-
    - Wrap the database operation in a try-catch block.
    - If an error occurs, return null.
 
 5. **Return the deleted job**
-
    - After the try-catch block, return `job`.
 
 6. **Export the deleteJobAction function**
@@ -1953,18 +1877,15 @@ export async function deleteJobAction(id: string): Promise<JobType | null> {
 ## Challenge - DeleteJobButton
 
 1. **Import necessary libraries and components**
-
    - Import the `Button`, `Badge`, `JobInfo`, and `useToast` components from your components directory.
    - Import the `useMutation` and `useQueryClient` hooks from `@tanstack/react-query`.
    - Import the `deleteJobAction` function from your actions file.
 
 2. **Define the DeleteJobBtn component**
-
    - Define a function component named `DeleteJobBtn` that takes an object as a prop.
    - This object should have an `id` property of type string.
 
 3. **Use hooks to get necessary data and functions**
-
    - Inside `DeleteJobBtn`, use the `useToast` hook to get the `toast` function.
    - Use the `useQueryClient` hook to get the `queryClient` object.
    - Use the `useMutation` hook to get the `mutate` function and `isPending` state.
@@ -1973,7 +1894,6 @@ export async function deleteJobAction(id: string): Promise<JobType | null> {
    - The `onSuccess` property should be a function that takes `data` as a parameter and invalidates the `jobs`, `stats`, and `charts` queries if data is truthy. If data is falsy, it should call `toast` with an object that has a `description` property of 'there was an error'.
 
 4. **Create the component UI**
-
    - In the component's return statement, create the component UI using the `Button` component.
    - Pass the `mutate` function as the `onClick` prop to the `Button` component.
    - Pass `isPending` as the `loading` prop to the `Button` component.
@@ -2012,7 +1932,7 @@ function DeleteJobBtn({ id }: { id: string }) {
   });
   return (
     <Button
-      size='sm'
+      size="sm"
       disabled={isPending}
       onClick={() => {
         mutate(id);
@@ -2028,16 +1948,13 @@ export default DeleteJobBtn;
 ## Challenge - GetSingleJobAction
 
 1. **Define the getSingleJobAction function**
-
    - Define an asynchronous function named `getSingleJobAction` that takes a string `id` as a parameter.
    - This function should return a Promise that resolves to a `JobType` object or null.
 
 2. **Authenticate the user**
-
    - Inside the `getSingleJobAction` function, call `authenticateAndRedirect` and store its return value in `userId`.
 
 3. **Fetch the job from the database**
-
    - Use the `prisma.job.findUnique` method to fetch the job from the database.
    - Pass an object to this method with a `where` property.
    - The `where` property should be an object with `id` and `clerkId` properties.
@@ -2045,17 +1962,14 @@ export default DeleteJobBtn;
    - Store the return value of this method in `job`.
 
 4. **Handle errors**
-
    - Wrap the database operation in a try-catch block.
    - If an error occurs, set `job` to null.
 
 5. **Redirect if the job is not found**
-
    - After the try-catch block, check if `job` is falsy.
    - If `job` is falsy, call `redirect` with '/jobs' as its argument.
 
 6. **Return the fetched job**
-
    - After the if statement, return `job`.
 
 7. **Export the getSingleJobAction function**
@@ -2091,29 +2005,24 @@ export async function getSingleJobAction(id: string): Promise<JobType | null> {
 - create EditJobForm which accepts jobId props (string)
 
 1. **Import necessary libraries and components**
-
    - Import the `EditJobForm` component from your components directory.
    - Import the `getSingleJobAction` function from your actions file.
    - Import the `dehydrate`, `HydrationBoundary`, and `QueryClient` components from `@tanstack/react-query`.
 
 2. **Define the JobDetailPage component**
-
    - Define an asynchronous function component named `JobDetailPage` that takes an object as a prop.
    - This object should have a `params` property, which is also an object with an `id` property of type string.
 
 3. **Create a new query client**
-
    - Inside `JobDetailPage`, create a new `QueryClient` instance and store it in `queryClient`.
 
 4. **Prefetch the job data**
-
    - Use the `prefetchQuery` method of `queryClient` to prefetch the job data.
    - Pass an object to this method with `queryKey` and `queryFn` properties.
    - The `queryKey` property should be an array with 'job' and `params.id`.
    - The `queryFn` property should be a function that calls `getSingleJobAction` with `params.id`.
 
 5. **Create the component UI**
-
    - In the component's return statement, create the component UI using the `HydrationBoundary` and `EditJobForm` components.
    - Pass the result of calling `dehydrate` with `queryClient` as the `state` prop to `HydrationBoundary`.
    - Pass `params.id` as the `jobId` prop to `EditJobForm`.
@@ -2155,17 +2064,14 @@ export default JobDetailPage;
 ## Challenge - UpdateJobAction
 
 1. **Define the updateJobAction function**
-
    - Define an asynchronous function named `updateJobAction` that takes a string `id` and an object `values` as parameters.
    - The `values` parameter should be of type `CreateAndEditJobType`.
    - This function should return a Promise that resolves to a `JobType` object or null.
 
 2. **Authenticate the user**
-
    - Inside the `updateJobAction` function, call `authenticateAndRedirect` and store its return value in `userId`.
 
 3. **Update the job in the database**
-
    - Use the `prisma.job.update` method to update the job in the database.
    - Pass an object to this method with `where` and `data` properties.
    - The `where` property should be an object with `id` and `clerkId` properties.
@@ -2174,12 +2080,10 @@ export default JobDetailPage;
    - Store the return value of this method in `job`.
 
 4. **Handle errors**
-
    - Wrap the database operation in a try-catch block.
    - If an error occurs, return null.
 
 5. **Return the updated job**
-
    - After the try-catch block, return `job`.
 
 6. **Export the updateJobAction function**
@@ -2190,7 +2094,7 @@ export default JobDetailPage;
 ```ts
 export async function updateJobAction(
   id: string,
-  values: CreateAndEditJobType
+  values: CreateAndEditJobType,
 ): Promise<JobType | null> {
   const userId = authenticateAndRedirect();
 
@@ -2214,7 +2118,6 @@ export async function updateJobAction(
 ## Challenge - EditJobForm
 
 1. **Import necessary libraries and components**
-
    - Import `zodResolver` from `@hookform/resolvers/zod`.
    - Import `useForm` from `react-hook-form`.
    - Import `JobStatus`, `JobMode`, `createAndEditJobSchema`, and `CreateAndEditJobType` from your types file.
@@ -2227,12 +2130,10 @@ export async function updateJobAction(
    - Import `useRouter` from `next/router`.
 
 2. **Define the EditJobForm component**
-
    - Define a function component named `EditJobForm` that takes an object as a prop.
    - This object should have a `jobId` property of type string.
 
 3. **Use hooks to get necessary data and functions**
-
    - Inside `EditJobForm`, use the `useQueryClient` hook to get the `queryClient` object.
    - Use the `useToast` hook to get the `toast` function.
    - Use the `useRouter` hook to get the router object.
@@ -2240,16 +2141,13 @@ export async function updateJobAction(
    - Use the `useMutation` hook to get the `mutate` function and `isPending` state.
 
 4. **Use the useForm hook to get form functions**
-
    - Use the `useForm` hook to get the form object.
    - Pass an object to this hook with `resolver` and `defaultValues` properties.
 
 5. **Define the submit handler**
-
    - Define a function `onSubmit` that calls `mutate` with values.
 
 6. **Create the component UI**
-
    - In the component's return statement, create the component UI using the `Form`, `CustomFormField`, `CustomFormSelect`, and `Button` components.
 
 7. **Export the EditJobForm component**
@@ -2334,35 +2232,35 @@ function EditJobForm({ jobId }: { jobId: string }) {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className='bg-muted p-8 rounded'
+        className="bg-muted p-8 rounded"
       >
-        <h2 className='capitalize font-semibold text-4xl mb-6'>edit job</h2>
-        <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-3 items-start'>
+        <h2 className="capitalize font-semibold text-4xl mb-6">edit job</h2>
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 items-start">
           {/* position */}
-          <CustomFormField name='position' control={form.control} />
+          <CustomFormField name="position" control={form.control} />
           {/* company */}
-          <CustomFormField name='company' control={form.control} />
+          <CustomFormField name="company" control={form.control} />
           {/* location */}
-          <CustomFormField name='location' control={form.control} />
+          <CustomFormField name="location" control={form.control} />
 
           {/* job status */}
           <CustomFormSelect
-            name='status'
+            name="status"
             control={form.control}
-            labelText='job status'
+            labelText="job status"
             items={Object.values(JobStatus)}
           />
           {/* job  type */}
           <CustomFormSelect
-            name='mode'
+            name="mode"
             control={form.control}
-            labelText='job mode'
+            labelText="job mode"
             items={Object.values(JobMode)}
           />
 
           <Button
-            type='submit'
-            className='self-end capitalize'
+            type="submit"
+            className="self-end capitalize"
             disabled={isPending}
           >
             {isPending ? 'updating...' : 'edit job'}
@@ -2417,16 +2315,13 @@ main()
 ## Challenge - GetStatsAction
 
 1. **Define the getStatsAction function**
-
    - Define an asynchronous function named `getStatsAction`.
    - This function should return a Promise that resolves to an object with `pending`, `interview`, and `declined` properties, all of type number.
 
 2. **Authenticate the user**
-
    - Inside the `getStatsAction` function, call `authenticateAndRedirect` and store its return value in `userId`.
 
 3. **Fetch the job stats from the database**
-
    - Use the `prisma.job.groupBy` method to fetch the job stats from the database.
    - Pass an object to this method with `by`, `_count`, and `where` properties.
    - The `by` property should be an array with 'status'.
@@ -2435,23 +2330,19 @@ main()
    - Store the return value of this method in `stats`.
 
 4. **Convert the stats array to an object**
-
    - Use the `Array.prototype.reduce` method to convert `stats` to an object and store it in `statsObject`.
    - The initial value of the accumulator should be an empty object.
    - In each iteration, set the property of the accumulator object with the key of `curr.status` to `curr._count.status`.
 
 5. **Create the default stats object**
-
    - Create an object `defaultStats` with `pending`, `declined`, and `interview` properties all set to 0.
    - Use the spread operator to add the properties of `statsObject` to `defaultStats`.
 
 6. **Handle errors**
-
    - Wrap the database operation and the stats conversion in a try-catch block.
    - If an error occurs, call `redirect` with '/jobs'.
 
 7. **Return the stats object**
-
    - After the try-catch block, return `defaultStats`.
 
 8. **Export the getStatsAction function**
@@ -2478,10 +2369,13 @@ export async function getStatsAction(): Promise<{
         clerkId: userId, // replace userId with the actual clerkId
       },
     });
-    const statsObject = stats.reduce((acc, curr) => {
-      acc[curr.status] = curr._count.status;
-      return acc;
-    }, {} as Record<string, number>);
+    const statsObject = stats.reduce(
+      (acc, curr) => {
+        acc[curr.status] = curr._count.status;
+        return acc;
+      },
+      {} as Record<string, number>,
+    );
 
     const defaultStats = {
       pending: 0,
@@ -2499,20 +2393,16 @@ export async function getStatsAction(): Promise<{
 ## Challenge - GetChartsAction
 
 1. **Define the getChartsDataAction function**
-
    - Define an asynchronous function named `getChartsDataAction`.
    - This function should return a Promise that resolves to an array of objects, each with `date` and `count` properties.
 
 2. **Authenticate the user**
-
    - Inside the `getChartsDataAction` function, call `authenticateAndRedirect` and store its return value in `userId`.
 
 3. **Calculate the date six months ago**
-
    - Use `dayjs` to get the current date, subtract 6 months from it, and convert it to a JavaScript Date object. Store this value in `sixMonthsAgo`.
 
 4. **Fetch the jobs from the database**
-
    - Use the `prisma.job.findMany` method to fetch the jobs from the database.
    - Pass an object to this method with `where` and `orderBy` properties.
    - The `where` property should be an object with `clerkId` and `createdAt` properties.
@@ -2522,7 +2412,6 @@ export async function getStatsAction(): Promise<{
    - Store the return value of this method in `jobs`.
 
 5. **Calculate the number of applications per month**
-
    - Use the `Array.prototype.reduce` method to calculate the number of applications per month and store it in `applicationsPerMonth`.
    - In each iteration, format the `createdAt` property of the current job to 'MMM YY' and store it in `date`.
    - Find an entry in the accumulator with `date` equal to `date` and store it in `existingEntry`.
@@ -2530,12 +2419,10 @@ export async function getStatsAction(): Promise<{
    - If `existingEntry` does not exist, push a new object to the accumulator with `date` and `count` properties.
 
 6. **Handle errors**
-
    - Wrap the database operation and the applications per month calculation in a try-catch block.
    - If an error occurs, call `redirect` with '/jobs'.
 
 7. **Return the applications per month**
-
    - After the try-catch block, return `applicationsPerMonth`.
 
 8. **Export the getChartsDataAction function**
@@ -2562,19 +2449,22 @@ export async function getChartsDataAction(): Promise<
       },
     });
 
-    let applicationsPerMonth = jobs.reduce((acc, job) => {
-      const date = dayjs(job.createdAt).format('MMM YY');
+    let applicationsPerMonth = jobs.reduce(
+      (acc, job) => {
+        const date = dayjs(job.createdAt).format('MMM YY');
 
-      const existingEntry = acc.find((entry) => entry.date === date);
+        const existingEntry = acc.find((entry) => entry.date === date);
 
-      if (existingEntry) {
-        existingEntry.count += 1;
-      } else {
-        acc.push({ date, count: 1 });
-      }
+        if (existingEntry) {
+          existingEntry.count += 1;
+        } else {
+          acc.push({ date, count: 1 });
+        }
 
-      return acc;
-    }, [] as Array<{ date: string; count: number }>);
+        return acc;
+      },
+      [] as Array<{ date: string; count: number }>,
+    );
 
     return applicationsPerMonth;
   } catch (error) {
@@ -2590,28 +2480,23 @@ export async function getChartsDataAction(): Promise<
 - wrap stats page in React Query and pre-fetch
 
 1. **Import necessary libraries and components**
-
    - Import `ChartsContainer` and `StatsContainer` from your components directory.
    - Import `getChartsDataAction` and `getStatsAction` from your actions file.
    - Import `dehydrate`, `HydrationBoundary`, and `QueryClient` from `@tanstack/react-query`.
 
 2. **Define the StatsPage component**
-
    - Define an asynchronous function component named `StatsPage`.
 
 3. **Initialize the query client**
-
    - Inside `StatsPage`, create a new instance of `QueryClient` and store it in `queryClient`.
 
 4. **Prefetch the stats and charts data**
-
    - Use the `queryClient.prefetchQuery` method to prefetch the stats and charts data.
    - Pass an object to this method with `queryKey` and `queryFn` properties.
    - The `queryKey` property should be an array with 'stats' or 'charts'.
    - The `queryFn` property should be a function that calls `getStatsAction` or `getChartsDataAction`.
 
 5. **Create the component UI**
-
    - In the component's return statement, create the component UI using the `HydrationBoundary`, `StatsContainer`, and `ChartsContainer` components.
    - Pass the result of calling `dehydrate` with `queryClient` as the `state` prop to `HydrationBoundary`.
 
@@ -2624,7 +2509,7 @@ export async function getChartsDataAction(): Promise<
 
 ```tsx
 function loading() {
-  return <h2 className='text-xl font-medium capitalize'>loading...</h2>;
+  return <h2 className="text-xl font-medium capitalize">loading...</h2>;
 }
 export default loading;
 ```
@@ -2676,11 +2561,9 @@ npx shadcn-ui@latest add skeleton
 - create StatsCard component
 
 1. **Import necessary libraries and components for StatsCards**
-
    - Import `Card`, `CardDescription`, `CardHeader`, and `CardTitle` from your UI components directory.
 
 2. **Define the StatsCards component**
-
    - Define a function component named `StatsCards` that takes `title` and `value` as props.
    - In the component's return statement, create the component UI using the `Card`, `CardHeader`, `CardTitle`, and `CardDescription` components.
    - The `Card` component should have a `CardHeader` child.
@@ -2689,17 +2572,14 @@ npx shadcn-ui@latest add skeleton
    - The `CardDescription` component should display the `value` prop.
 
 3. **Export the StatsCards component**
-
    - After defining the `StatsCards` component, export it so it can be used in other parts of your application.
 
 4. **Import necessary libraries and components for StatsLoadingCard**
-
    - Import `React` from the react library.
    - Import `Card`, `CardHeader` from your UI components directory.
    - Import `Skeleton` from your UI components directory.
 
 5. **Define the StatsLoadingCard component**
-
    - Define a function component named `StatsLoadingCard`.
    - In the component's return statement, create the component UI using the `Card`, `CardHeader`, and `Skeleton` components.
    - The `Card` component should have a `CardHeader` child.
@@ -2731,10 +2611,10 @@ type StatsCardsProps = {
 
 function StatsCards({ title, value }: StatsCardsProps) {
   return (
-    <Card className='bg-muted'>
-      <CardHeader className='flex flex-row justify-between items-center'>
-        <CardTitle className='capitalize'>{title}</CardTitle>
-        <CardDescription className='text-4xl font-extrabold text-primary mt-[0px!important]'>
+    <Card className="bg-muted">
+      <CardHeader className="flex flex-row justify-between items-center">
+        <CardTitle className="capitalize">{title}</CardTitle>
+        <CardDescription className="text-4xl font-extrabold text-primary mt-[0px!important]">
           {value}
         </CardDescription>
       </CardHeader>
@@ -2744,13 +2624,13 @@ function StatsCards({ title, value }: StatsCardsProps) {
 
 export function StatsLoadingCard() {
   return (
-    <Card className='w-[330px] h-[88px]'>
-      <CardHeader className='flex flex-row justify-between items-center'>
-        <div className='flex items-center space-x-4'>
-          <Skeleton className='h-12 w-12 rounded-full' />
-          <div className='space-y-2'>
-            <Skeleton className='h-4 w-[150px]' />
-            <Skeleton className='h-4 w-[100px]' />
+    <Card className="w-[330px] h-[88px]">
+      <CardHeader className="flex flex-row justify-between items-center">
+        <div className="flex items-center space-x-4">
+          <Skeleton className="h-12 w-12 rounded-full" />
+          <div className="space-y-2">
+            <Skeleton className="h-4 w-[150px]" />
+            <Skeleton className="h-4 w-[100px]" />
           </div>
         </div>
       </CardHeader>
@@ -2764,29 +2644,24 @@ export default StatsCards;
 ## Challenge - StatsContainer
 
 1. **Import necessary libraries and components**
-
    - Import `useQuery` from the `@tanstack/react-query` library.
    - Import `getStatsAction` from your actions file.
    - Import `StatsCard` and `StatsLoadingCard` from your components directory.
 
 2. **Define the StatsContainer component**
-
    - Define a function component named `StatsContainer`.
 
 3. **Use the useQuery hook**
-
    - Inside `StatsContainer`, call the `useQuery` hook and destructure `data` and `isPending` from its return value.
    - Pass an object to `useQuery` with `queryKey` and `queryFn` properties.
    - The `queryKey` property should be an array with 'stats'.
    - The `queryFn` property should be a function that calls `getStatsAction`.
 
 4. **Handle the loading state**
-
    - Inside `StatsContainer`, add a conditional return statement that checks if `isPending` is true.
    - If `isPending` is true, return a `div` element with three `StatsLoadingCard` children.
 
 5. **Handle the data state**
-
    - After the loading state check, return a `div` element with three `StatsCard` children.
    - Each `StatsCard` should have `title` and `value` props.
    - The `title` prop should be a string that describes the data.
@@ -2811,7 +2686,7 @@ function StatsContainer() {
 
   if (isPending)
     return (
-      <div className='grid md:grid-cols-2 gap-4 lg:grid-cols-3'>
+      <div className="grid md:grid-cols-2 gap-4 lg:grid-cols-3">
         <StatsLoadingCard />
         <StatsLoadingCard />
         <StatsLoadingCard />
@@ -2819,10 +2694,10 @@ function StatsContainer() {
     );
 
   return (
-    <div className='grid md:grid-cols-2 gap-4 lg:grid-cols-3'>
-      <StatsCard title='pending jobs' value={data?.pending || 0} />
-      <StatsCard title='interviews set' value={data?.interview || 0} />
-      <StatsCard title='jobs declined' value={data?.declined || 0} />
+    <div className="grid md:grid-cols-2 gap-4 lg:grid-cols-3">
+      <StatsCard title="pending jobs" value={data?.pending || 0} />
+      <StatsCard title="interviews set" value={data?.interview || 0} />
+      <StatsCard title="jobs declined" value={data?.declined || 0} />
     </div>
   );
 }
@@ -2836,33 +2711,27 @@ export default StatsContainer;
 ## Challenge - ChartsContainer
 
 1. **Import necessary libraries and components**
-
    - Import `useQuery` from the react-query library.
    - Import `ResponsiveContainer`, `BarChart`, `CartesianGrid`, `XAxis`, `YAxis`, `Tooltip`, and `Bar` from recharts, a composable charting library built on React components.
 
 2. **Define the ChartsContainer component**
-
    - Define a function component named `ChartsContainer`.
 
 3. **Use the useQuery hook**
-
    - Inside `ChartsContainer`, call the `useQuery` hook and destructure `data`, `isPending` from its return value.
    - Pass an object to `useQuery` with `queryKey` and `queryFn` properties.
    - The `queryKey` property should be an array with a unique key.
    - The `queryFn` property should be a function that fetches the data you want to display in the chart.
 
 4. **Handle the loading state**
-
    - Inside `ChartsContainer`, add a conditional return statement that checks if `isPending` is true.
    - If `isPending` is true, return a `h2` element with a message indicating that the data is loading.
 
 5. **Handle the empty data state**
-
    - After the loading state check, add a conditional return statement that checks if `data` is null or `data.length` is less than 1.
    - If the condition is true, return null.
 
 6. **Render the chart**
-
    - After the empty data state check, return a `section` element.
    - Inside the `section` element, render a `h1` element with a title for the chart.
    - After the `h1` element, render a `ResponsiveContainer` component.
@@ -2896,20 +2765,20 @@ function ChartsContainer() {
     queryFn: () => getChartsDataAction(),
   });
 
-  if (isPending) return <h2 className='text-xl font-medium'>Please wait...</h2>;
+  if (isPending) return <h2 className="text-xl font-medium">Please wait...</h2>;
   if (!data || data.length < 1) return null;
   return (
-    <section className='mt-16'>
-      <h1 className='text-4xl font-semibold text-center'>
+    <section className="mt-16">
+      <h1 className="text-4xl font-semibold text-center">
         Monthly Applications
       </h1>
-      <ResponsiveContainer width='100%' height={300}>
+      <ResponsiveContainer width="100%" height={300}>
         <BarChart data={data} margin={{ top: 50 }}>
-          <CartesianGrid strokeDasharray='3 3' />
-          <XAxis dataKey='date' />
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="date" />
           <YAxis allowDecimals={false} />
           <Tooltip />
-          <Bar dataKey='count' fill='#2563eb' barSize={75} />
+          <Bar dataKey="count" fill="#2563eb" barSize={75} />
         </BarChart>
       </ResponsiveContainer>
     </section>
@@ -2995,7 +2864,7 @@ type ButtonContainerProps = {
 };
 import { Button } from './ui/button';
 function ButtonContainer({ currentPage, totalPages }: ButtonContainerProps) {
-  return <h2 className='text-4xl'>button container</h2>;
+  return <h2 className="text-4xl">button container</h2>;
 }
 export default ButtonContainer;
 ```
@@ -3055,12 +2924,12 @@ function ButtonContainer({ currentPage, totalPages }: ButtonContainerProps) {
     router.push(`${pathname}?${params.toString()}`);
   };
   return (
-    <div className='flex  gap-x-2'>
+    <div className="flex  gap-x-2">
       {pageButtons.map((page) => {
         return (
           <Button
             key={page}
-            size='icon'
+            size="icon"
             variant={currentPage === page ? 'default' : 'outline'}
             onClick={() => handlePageChange(page)}
           >
@@ -3115,7 +2984,7 @@ function ButtonContainer({ currentPage, totalPages }: ButtonContainerProps) {
     return (
       <Button
         key={page}
-        size='icon'
+        size="icon"
         variant={activeClass ? 'default' : 'outline'}
         onClick={() => handlePageChange(page)}
       >
@@ -3128,15 +2997,15 @@ function ButtonContainer({ currentPage, totalPages }: ButtonContainerProps) {
     const pageButtons = [];
     // first page
     pageButtons.push(
-      addPageButton({ page: 1, activeClass: currentPage === 1 })
+      addPageButton({ page: 1, activeClass: currentPage === 1 }),
     );
     // dots
 
     if (currentPage > 3) {
       pageButtons.push(
-        <Button size='icon' variant='outline' key='dots-1'>
+        <Button size="icon" variant="outline" key="dots-1">
           ...
-        </Button>
+        </Button>,
       );
     }
     // one before current page
@@ -3145,7 +3014,7 @@ function ButtonContainer({ currentPage, totalPages }: ButtonContainerProps) {
         addPageButton({
           page: currentPage - 1,
           activeClass: false,
-        })
+        }),
       );
     }
     // current page
@@ -3154,7 +3023,7 @@ function ButtonContainer({ currentPage, totalPages }: ButtonContainerProps) {
         addPageButton({
           page: currentPage,
           activeClass: true,
-        })
+        }),
       );
     }
     // one after current page
@@ -3164,31 +3033,31 @@ function ButtonContainer({ currentPage, totalPages }: ButtonContainerProps) {
         addPageButton({
           page: currentPage + 1,
           activeClass: false,
-        })
+        }),
       );
     }
     if (currentPage < totalPages - 2) {
       pageButtons.push(
-        <Button size='icon' variant='outline' key='dots-1'>
+        <Button size="icon" variant="outline" key="dots-1">
           ...
-        </Button>
+        </Button>,
       );
     }
     pageButtons.push(
       addPageButton({
         page: totalPages,
         activeClass: currentPage === totalPages,
-      })
+      }),
     );
     return pageButtons;
   };
 
   return (
-    <div className='flex  gap-x-2'>
+    <div className="flex  gap-x-2">
       {/* prev */}
       <Button
-        className='flex items-center gap-x-2 '
-        variant='outline'
+        className="flex items-center gap-x-2 "
+        variant="outline"
         onClick={() => {
           let prevPage = currentPage - 1;
           if (prevPage < 1) prevPage = totalPages;
@@ -3201,13 +3070,13 @@ function ButtonContainer({ currentPage, totalPages }: ButtonContainerProps) {
       {renderPageButtons()}
       {/* next */}
       <Button
-        className='flex items-center gap-x-2 '
+        className="flex items-center gap-x-2 "
         onClick={() => {
           let nextPage = currentPage + 1;
           if (nextPage > totalPages) nextPage = 1;
           handlePageChange(nextPage);
         }}
-        variant='outline'
+        variant="outline"
       >
         next
         <ChevronRight />

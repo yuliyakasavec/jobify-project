@@ -50,7 +50,6 @@ function EditJobForm({ jobId }: { jobId: string }) {
     },
   });
 
-  // 1. Define your form.
   const form = useForm<CreateAndEditJobType>({
     resolver: zodResolver(createAndEditJobSchema),
     defaultValues: {
@@ -62,10 +61,7 @@ function EditJobForm({ jobId }: { jobId: string }) {
     },
   });
 
-  // 2. Define a submit handler.
   function onSubmit(values: CreateAndEditJobType) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
     mutate(values);
   }
 
@@ -77,21 +73,16 @@ function EditJobForm({ jobId }: { jobId: string }) {
       >
         <h2 className="capitalize font-semibold text-4xl mb-6">edit job</h2>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 items-start">
-          {/* position */}
           <CustomFormField name="position" control={form.control} />
-          {/* company */}
           <CustomFormField name="company" control={form.control} />
-          {/* location */}
           <CustomFormField name="location" control={form.control} />
 
-          {/* job status */}
           <CustomFormSelect
             name="status"
             control={form.control}
             labelText="job status"
             items={Object.values(JobStatus)}
           />
-          {/* job  type */}
           <CustomFormSelect
             name="mode"
             control={form.control}
