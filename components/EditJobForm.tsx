@@ -2,6 +2,7 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+
 import {
   JobStatus,
   JobMode,
@@ -11,6 +12,7 @@ import {
 
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
+
 import { CustomFormField, CustomFormSelect } from './FormComponents';
 import { useMutation, useQueryClient, useQuery } from '@tanstack/react-query';
 import {
@@ -20,7 +22,6 @@ import {
 } from '@/utils/actions';
 import { useToast } from '@/components/ui/use-toast';
 import { useRouter } from 'next/navigation';
-
 function EditJobForm({ jobId }: { jobId: string }) {
   const queryClient = useQueryClient();
   const { toast } = useToast();
@@ -50,6 +51,7 @@ function EditJobForm({ jobId }: { jobId: string }) {
     },
   });
 
+  // 1. Define your form.
   const form = useForm<CreateAndEditJobType>({
     resolver: zodResolver(createAndEditJobSchema),
     defaultValues: {
@@ -61,7 +63,10 @@ function EditJobForm({ jobId }: { jobId: string }) {
     },
   });
 
+  // 2. Define a submit handler.
   function onSubmit(values: CreateAndEditJobType) {
+    // Do something with the form values.
+    // ✅ This will be type-safe and validated.
     mutate(values);
   }
 
@@ -69,30 +74,35 @@ function EditJobForm({ jobId }: { jobId: string }) {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="bg-muted p-8 rounded"
+        className='bg-muted p-8 rounded'
       >
-        <h2 className="capitalize font-semibold text-4xl mb-6">edit job</h2>
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 items-start">
-          <CustomFormField name="position" control={form.control} />
-          <CustomFormField name="company" control={form.control} />
-          <CustomFormField name="location" control={form.control} />
+        <h2 className='capitalize font-semibold text-4xl mb-6'>edit job</h2>
+        <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-3 items-start'>
+          {/* position */}
+          <CustomFormField name='position' control={form.control} />
+          {/* company */}
+          <CustomFormField name='company' control={form.control} />
+          {/* location */}
+          <CustomFormField name='location' control={form.control} />
 
+          {/* job status */}
           <CustomFormSelect
-            name="status"
+            name='status'
             control={form.control}
-            labelText="job status"
+            labelText='job status'
             items={Object.values(JobStatus)}
           />
+          {/* job  type */}
           <CustomFormSelect
-            name="mode"
+            name='mode'
             control={form.control}
-            labelText="job mode"
+            labelText='job mode'
             items={Object.values(JobMode)}
           />
 
           <Button
-            type="submit"
-            className="self-end capitalize"
+            type='submit'
+            className='self-end capitalize'
             disabled={isPending}
           >
             {isPending ? 'updating...' : 'edit job'}
@@ -102,5 +112,4 @@ function EditJobForm({ jobId }: { jobId: string }) {
     </Form>
   );
 }
-
 export default EditJobForm;

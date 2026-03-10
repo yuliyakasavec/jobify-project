@@ -1,14 +1,15 @@
 'use server';
 
 import prisma from './db';
+import { auth } from '@clerk/nextjs/server';
 import { JobType, CreateAndEditJobType, createAndEditJobSchema } from './types';
 import { redirect } from 'next/navigation';
 import { Prisma } from '@prisma/client';
 import dayjs from 'dayjs';
-import { auth } from '@clerk/nextjs/server';
 
 function authenticateAndRedirect(): string {
   const { userId } = auth();
+
   if (!userId) {
     redirect('/');
   }
@@ -16,7 +17,7 @@ function authenticateAndRedirect(): string {
 }
 
 export async function createJobAction(
-  values: CreateAndEditJobType,
+  values: CreateAndEditJobType
 ): Promise<JobType | null> {
   // await new Promise((resolve) => setTimeout(resolve, 3000));
   const userId = authenticateAndRedirect();
@@ -25,6 +26,7 @@ export async function createJobAction(
     const job: JobType = await prisma.job.create({
       data: {
         ...values,
+
         clerkId: userId,
       },
     });
@@ -54,6 +56,7 @@ export async function getAllJobsAction({
   totalPages: number;
 }> {
   const userId = authenticateAndRedirect();
+  // await new Promise((resolve) => setTimeout(resolve, 5000));
 
   try {
     let whereClause: Prisma.JobWhereInput = {
@@ -82,15 +85,21 @@ export async function getAllJobsAction({
         status: jobStatus,
       };
     }
+    const skip = (page - 1) * limit;
 
     const jobs: JobType[] = await prisma.job.findMany({
       where: whereClause,
+      skip,
+      take: limit,
       orderBy: {
         createdAt: 'desc',
       },
     });
-
-    return { jobs, count: 0, page: 1, totalPages: 0 };
+    const count: number = await prisma.job.count({
+      where: whereClause,
+    });
+    const totalPages = Math.ceil(count / limit);
+    return { jobs, count, page, totalPages };
   } catch (error) {
     console.error(error);
     return { jobs: [], count: 0, page: 1, totalPages: 0 };
@@ -135,7 +144,7 @@ export async function getSingleJobAction(id: string): Promise<JobType | null> {
 
 export async function updateJobAction(
   id: string,
-  values: CreateAndEditJobType,
+  values: CreateAndEditJobType
 ): Promise<JobType | null> {
   const userId = authenticateAndRedirect();
 
@@ -154,13 +163,13 @@ export async function updateJobAction(
     return null;
   }
 }
-
 export async function getStatsAction(): Promise<{
   pending: number;
   interview: number;
   declined: number;
 }> {
   const userId = authenticateAndRedirect();
+  // just to show Skeleton
   // await new Promise((resolve) => setTimeout(resolve, 5000));
   try {
     const stats = await prisma.job.groupBy({
@@ -169,16 +178,13 @@ export async function getStatsAction(): Promise<{
         status: true,
       },
       where: {
-        clerkId: userId,
+        clerkId: userId, // replace userId with the actual clerkId
       },
     });
-    const statsObject = stats.reduce(
-      (acc, curr) => {
-        acc[curr.status] = curr._count.status;
-        return acc;
-      },
-      {} as Record<string, number>,
-    );
+    const statsObject = stats.reduce((acc, curr) => {
+      acc[curr.status] = curr._count.status;
+      return acc;
+    }, {} as Record<string, number>);
 
     const defaultStats = {
       pending: 0,
@@ -210,22 +216,19 @@ export async function getChartsDataAction(): Promise<
       },
     });
 
-    let applicationsPerMonth = jobs.reduce(
-      (acc, job) => {
-        const date = dayjs(job.createdAt).format('MMM YY');
+    let applicationsPerMonth = jobs.reduce((acc, job) => {
+      const date = dayjs(job.createdAt).format('MMM YY');
 
-        const existingEntry = acc.find((entry) => entry.date === date);
+      const existingEntry = acc.find((entry) => entry.date === date);
 
-        if (existingEntry) {
-          existingEntry.count += 1;
-        } else {
-          acc.push({ date, count: 1 });
-        }
+      if (existingEntry) {
+        existingEntry.count += 1;
+      } else {
+        acc.push({ date, count: 1 });
+      }
 
-        return acc;
-      },
-      [] as Array<{ date: string; count: number }>,
-    );
+      return acc;
+    }, [] as Array<{ date: string; count: number }>);
 
     return applicationsPerMonth;
   } catch (error) {

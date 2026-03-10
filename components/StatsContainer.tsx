@@ -11,7 +11,7 @@ function StatsContainer() {
 
   if (isPending)
     return (
-      <div className="grid md:grid-cols-2 gap-4 lg:grid-cols-3">
+      <div className='grid md:grid-cols-2 gap-4 lg:grid-cols-3'>
         <StatsLoadingCard />
         <StatsLoadingCard />
         <StatsLoadingCard />
@@ -19,12 +19,11 @@ function StatsContainer() {
     );
 
   return (
-    <div className="grid md:grid-cols-2 gap-4 lg:grid-cols-3">
-      <StatsCard title="pending jobs" value={data?.pending || 0} />
-      <StatsCard title="interviews set" value={data?.interview || 0} />
-      <StatsCard title="jobs declined" value={data?.declined || 0} />
+    <div className='grid md:grid-cols-2 gap-4 lg:grid-cols-3'>
+      <StatsCard title='pending jobs' value={data?.pending || 0} />
+      <StatsCard title='interviews set' value={data?.interview || 0} />
+      <StatsCard title='jobs declined' value={data?.declined || 0} />
     </div>
   );
 }
-
 export default StatsContainer;

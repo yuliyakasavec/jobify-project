@@ -5,7 +5,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { deleteJobAction } from '@/utils/actions';
 import { useToast } from '@/components/ui/use-toast';
 
-function DeleteJobButton({ id }: { id: string }) {
+function DeleteJobBtn({ id }: { id: string }) {
   const { toast } = useToast();
   const queryClient = useQueryClient();
   const { mutate, isPending } = useMutation({
@@ -26,7 +26,7 @@ function DeleteJobButton({ id }: { id: string }) {
   });
   return (
     <Button
-      size="sm"
+      size='sm'
       disabled={isPending}
       onClick={() => {
         mutate(id);
@@ -36,5 +36,4 @@ function DeleteJobButton({ id }: { id: string }) {
     </Button>
   );
 }
-
-export default DeleteJobButton;
+export default DeleteJobBtn;
